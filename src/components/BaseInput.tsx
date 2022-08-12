@@ -1,13 +1,18 @@
-import { Fragment, FunctionalComponent } from "vue";
+import { Fragment, FunctionalComponent, ObjectEmitsOptions } from "vue";
 
 type Props = Record<"label"
 | "labelClasss"
 |"modelValue"
 | "inputClass"
 | "name"
-|"errorMessage", string>
+, string> & {errorMessage:string}
 
-const BaseInput:FunctionalComponent<Props> = (props, ) => {
+interface Emits extends ObjectEmitsOptions{
+
+  "update:modelValue"(payload:string):void 
+}
+
+const BaseInput:FunctionalComponent<Props, Emits> = (props, {}) => {
 
   return (
     <Fragment>
@@ -17,8 +22,9 @@ const BaseInput:FunctionalComponent<Props> = (props, ) => {
       id={props.name} 
       name={props.name} 
       value={props.modelValue}
+      onInput={event => }
       />
-      <p></p>
+      { props.errorMessage && <p>{props.errorMessage}</p>}
 
     </Fragment>
   )
