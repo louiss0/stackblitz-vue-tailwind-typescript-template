@@ -5,24 +5,26 @@ type Props = Record<"label"
 |"modelValue"
 | "inputClass"
 | "name"
-, string> & {errorMessage:string}
+, string> & {errorMessage?:string}
 
-interface Emits extends ObjectEmitsOptions{
+interface Emits  {
 
-  "update:modelValue"(payload:string):void 
+  "update:modelValue":(payload:string) => void 
 }
 
-const BaseInput:FunctionalComponent<Props, Emits> = (props, {}) => {
+const BaseInput:FunctionalComponent<Props, Readonly<Emits>> = (props, {emit}) => {
 
   return (
     <Fragment>
 
-      <label for={props.name}>{props.label} </label>
+      <label for={props.name} class={props.labelClasss} >{props.label} </label>
       <input type="text" 
       id={props.name} 
       name={props.name} 
       value={props.modelValue}
-      onInput={event => }
+      class={`py-1 px-3 ${props.inputClass}`}
+      onInput={event => 
+        emit("update:modelValue", (event.target as HTMLInputElement).value) }
       />
       { props.errorMessage && <p>{props.errorMessage}</p>}
 
