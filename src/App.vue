@@ -1,14 +1,15 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-
-import Gap from "@/components/Gap.tsx"
+import Gap from "@/components/Gap.vue"
 </script>
 
 <template>
-    <Gap/>
+    <div class="flex h-24">
+    <div class="bg-blue-900 w-24 h-full"></div>
+    <Gap :spaces="3" class="bg-red-500" />
+    <div class="bg-blue-900 w-24 h-full"></div>
+    <Gap :spaces="3" class="bg-red-500" />
+    <div class="bg-blue-900 w-24 h-full"></div>
+    <Gap :spaces="3" class="bg-red-500" />
+    </div>
 </template>
 
-<style scoped>
-
-</style>
