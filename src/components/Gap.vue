@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 
-\import {onMounted, useAttrs, shallowRef, } from "vue"
+import {onMounted, useAttrs, shallowRef, } from "vue"
 
 interface Props {
   spaces:number 
@@ -9,7 +9,7 @@ interface Props {
 const gapRef = shallowRef<HTMLDivElement | null>(null)
 
 const attrs = useAttrs()
-  const id = `gap${Math.ceil( Math.random() * Date.now())}`
+const id = `gap${Math.ceil(Math.random() * Date.now())}`
 
 onMounted(()=>{
   
@@ -62,7 +62,7 @@ onMounted(()=>{
     const anyOfTheConditionsRequiredToSetTheWidthOfTheElementAreTrue =  [
       parentElementsDisplayIncludesInline,
       parentElementsDisplayIsFlex && parentElementStyleFlexDirectionIsRow,
-    parentElementsDisplayIsGrid && parentElementStyleGridAutoFlowIsColumn
+      parentElementsDisplayIsGrid && parentElementStyleGridAutoFlowIsColumn,
   ].some((value)=> value) 
   
     if(anyOfTheConditionsRequiredToSetTheWidthOfTheElementAreTrue) {
